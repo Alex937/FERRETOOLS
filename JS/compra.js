@@ -22,20 +22,20 @@ function actualizarContador() {
     if (cartCount) cartCount.textContent = totalItems;
 }
 
-window.agregarAlCarrito = function(id) {
+window.agregarAlCarrito = function (id) {
     const producto = window.herramientas.find(h => h.id === id);
     if (!producto) return;
-    
+
     const existente = carrito.find(i => i.id === id);
     if (existente) existente.cantidad++;
     else carrito.push({ ...producto, cantidad: 1 });
-    
+
     guardarCarrito();
     actualizarCarrito();
     mostrarNotificacion(`✅ ${producto.nombre} agregado`);
 };
 
-window.actualizarCantidad = function(id, nueva) {
+window.actualizarCantidad = function (id, nueva) {
     const item = carrito.find(i => i.id === id);
     if (item) {
         if (nueva <= 0) carrito = carrito.filter(i => i.id !== id);
@@ -45,7 +45,7 @@ window.actualizarCantidad = function(id, nueva) {
     }
 };
 
-window.eliminarDelCarrito = function(id) {
+window.eliminarDelCarrito = function (id) {
     carrito = carrito.filter(i => i.id !== id);
     guardarCarrito();
     actualizarCarrito();
@@ -66,27 +66,34 @@ function mostrarNotificacion(mensaje) {
 function actualizarCarrito() {
     const container = document.getElementById('cartContent');
     if (!container) return;
-    
+
     if (carrito.length === 0) {
         container.innerHTML = '<div class="cart-empty">🛒 Tu carrito está vacío</div>';
         return;
     }
-    
+
     let html = '';
     carrito.forEach(i => {
+        console.log(i)
         html += `
             <div class="cart-item">
                 <div class="cart-item-info">
-                    <div class="cart-item-title">${i.icono} ${i.nombre}</div>
-                    <small>$${i.precio.toLocaleString('es-CO')} c/u</small>
+                    <img src="${i.imagen}" alt="${i.nombre}" class="cart-item-image">
+                    <div class="cart-item-details">
+                        <div>${i.nombre}</div>
+                        <div>$${i.precio.toLocaleString('es-CO')}</div>
+                    </div>
                 </div>
-                <div class="cart-item-quantity">
-                    <button onclick="actualizarCantidad(${i.id}, ${i.cantidad - 1})">-</button>
-                    <span>${i.cantidad}</span>
-                    <button onclick="actualizarCantidad(${i.id}, ${i.cantidad + 1})">+</button>
+                <div class="cart-item-group">
+                    <div class="cart-item-quantity">
+                        <button onclick="actualizarCantidad(${i.id}, ${i.cantidad - 1})">-</button>
+                        <span>${i.cantidad}</span>
+                        <button onclick="actualizarCantidad(${i.id}, ${i.cantidad + 1})">+</button>
+                    </div>
+                    <div class="cart-item-total">$${(i.precio * i.cantidad).toLocaleString('es-CO')}</div>
+                    <button onclick="eliminarDelCarrito(${i.id})" style="background:none;border:none;color:#ff6b35;cursor:pointer;">🗑️</button>
                 </div>
-                <div class="cart-item-total">$${(i.precio * i.cantidad).toLocaleString('es-CO')}</div>
-                <button onclick="eliminarDelCarrito(${i.id})" style="background:none;border:none;color:#ff6b35;cursor:pointer;">🗑️</button>
+
             </div>
         `;
     });
@@ -101,7 +108,7 @@ function actualizarCarrito() {
     actualizarContador();
 }
 
-window.finalizarCompra = function() {
+window.finalizarCompra = function () {
     if (carrito.length === 0) return alert('Carrito vacío');
     if (confirm(`Total: $${calcularTotal().toLocaleString('es-CO')}\n¿Confirmar compra?`)) {
         carrito = [];
@@ -134,14 +141,14 @@ function checkSession() {
     return true;
 }
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     if (!checkSession()) return;
-    
+
     const userName = localStorage.getItem('ferretools_user_name') || localStorage.getItem('ferretools_phone') || 'Usuario';
     document.getElementById('userNameDisplay').innerText = userName.split(' ')[0];
-    
+
     document.getElementById('cartIcon').addEventListener('click', toggleCart);
     document.getElementById('logoutBtn').addEventListener('click', logout);
-    
+
     cargarCarrito();
 });
