@@ -1,8 +1,3 @@
-// ============================================
-// FERRETOOLS - CATÁLOGO DE HERRAMIENTAS
-// Archivo: catalogo.js
-// ============================================
-
 const herramientas = [
     { id: 1, nombre: "Martillo de Goma", precio: 32900, imagen: "imagenes/martillo de goma.jfif" },
     { id: 2, nombre: "Martillo de Uña Pulido", precio: 36900, imagen: "imagenes/Martillo de Uña.jfif" },
@@ -16,7 +11,14 @@ const herramientas = [
     { id: 10, nombre: "Pistola Silicona", precio: 52300, imagen: "imagenes/Pistola de silicona.jfif" },
     { id: 11, nombre: "Escalera Articulada Dielectrica 150kg", precio: 700000, imagen: "imagenes/Escalera.jfif" },
     { id: 12, nombre: "Taladro 1/2 pulgadas Atornillador 20V", precio: 625000, imagen: "imagenes/Taladro inalambrico.jfif" },
-    { id: 13, nombre: "Pulidora 4 1/2 pulgadas 900w", precio: 170000, imagen: "imagenes/Pulidora.jfif" }
+    { id: 13, nombre: "Pulidora 4 1/2 pulgadas 900w", precio: 170000, imagen: "imagenes/Pulidora.jfif" },
+    { id: 14, nombre: "Cortadora bladora y azulejo Profesional ", precio: 130000, imagen: "imagenes/Cortadora.jpg" },
+    { id: 15, nombre: "Pinza de pinta y cortafrio", precio: 38900, imagen: "imagenes/Pinza.jpg" },
+    { id: 16, nombre: "Multimetro Digital UNI - T UT33A", precio: 70000, imagen: "imagenes/Multimetro.jpg" },
+    { id: 17, nombre: "Juego de Herramientas mecanicas 201 piezas", precio: 552000, imagen: "imagenes/Juego de herramientas.jpg" },
+    { id: 18, nombre: "Cuchilla y nabaja cúter", precio: 170000, imagen: "imagenes/Bisturi.jpg" },
+    { id: 19, nombre: "Guadaña Husqvarna 545RX", precio: 170000, imagen: "imagenes/Guadaña.jpg" },
+    { id: 20, nombre: "Lijadora Roto-Orbital de 5 Pulgadas", precio: 170000, imagen: "imagenes/Lijadora.jpg" }
 ];
 
 function formatearPrecio(precio) {
@@ -35,7 +37,7 @@ function renderCatalog() {
             <div class="product-info">
                 <div class="product-title">${h.nombre}</div>
                 <div class="product-price">$${formatearPrecio(h.precio)}</div>
-                <button class="add-to-cart" data-id="${h.id}">🛒 Agregar al carrito</button>
+                <button class="add-to-cart" data-id="${h.id}"> Agregar al carrito</button>
             </div>
         </div>
     `).join('');
