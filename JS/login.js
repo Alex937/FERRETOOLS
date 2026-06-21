@@ -93,7 +93,7 @@ function register() {
     localStorage.setItem('ferretools_phone', formattedPhone);
     localStorage.setItem('ferretools_user_name', nuevoUsuario.fullName);
     
-    showMessage('registerMessage', '✅ Registro exitoso. Redirigiendo...', 'success');
+    showMessage('registerMessage', ' Registro exitoso. Redirigiendo...', 'success');
     setTimeout(() => {
         window.location.href = 'index.html';
     }, 1500);
@@ -120,12 +120,12 @@ function login() {
         localStorage.setItem('ferretools_logged_in', 'true');
         localStorage.setItem('ferretools_phone', formattedPhone);
         localStorage.setItem('ferretools_user_name', usuario.fullName);
-        showMessage('loginMessage', '✅ ¡Bienvenido! Redirigiendo...', 'success');
+        showMessage('loginMessage', ' ¡Bienvenido! Redirigiendo...', 'success');
         setTimeout(() => {
             window.location.href = 'index.html';
         }, 1500);
     } else {
-        showMessage('loginMessage', '❌ Celular o contraseña incorrectos', 'error');
+        showMessage('loginMessage', ' Celular o contraseña incorrectos', 'error');
     }
 }
 
