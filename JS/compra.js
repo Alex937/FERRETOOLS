@@ -1,7 +1,3 @@
-// ============================================
-// FERRETOOLS - CARRITO DE COMPRAS
-// Archivo: compra.js
-// ============================================
 
 let carrito = [];
 
@@ -32,7 +28,7 @@ window.agregarAlCarrito = function (id) {
 
     guardarCarrito();
     actualizarCarrito();
-    mostrarNotificacion(`✅ ${producto.nombre} agregado`);
+    mostrarNotificacion(` ${producto.nombre} agregado`);
 };
 
 window.actualizarCantidad = function (id, nueva) {
@@ -68,7 +64,7 @@ function actualizarCarrito() {
     if (!container) return;
 
     if (carrito.length === 0) {
-        container.innerHTML = '<div class="cart-empty">🛒 Tu carrito está vacío</div>';
+        container.innerHTML = '<div class="cart-empty"> Tu carrito está vacío</div>';
         return;
     }
 
@@ -102,7 +98,7 @@ function actualizarCarrito() {
             <span>Total:</span>
             <span>$${calcularTotal().toLocaleString('es-CO')}</span>
         </div>
-        <button class="checkout-btn" onclick="finalizarCompra()">💳 Finalizar Compra</button>
+        <button class="checkout-btn" onclick="finalizarCompra()"> Finalizar Compra</button>
     `;
     container.innerHTML = html;
     actualizarContador();
@@ -114,7 +110,7 @@ window.finalizarCompra = function () {
         carrito = [];
         guardarCarrito();
         actualizarCarrito();
-        alert('🎉 ¡Compra realizada! Gracias por confiar en Ferretools.');
+        alert(' ¡Compra realizada! Gracias por confiar en Ferretools.');
     }
 };
 
