@@ -295,22 +295,17 @@ small {
 }
 
 .product-image {
-<<<<<<< HEAD
     height: 180px;
-    background: #ffffff; /* fondo blanco */
-=======
-    width: 100%;
-    height: auto;
     background: #f9fafb;
->>>>>>> 2d8f87a0a66245de4cdea88da009e6c2988fa79d
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 10px; /* 👈 importante */
 }
 
 .product-image img {
-    max-width: 90%;
-    max-height: 90%;
+    width: 100%;
+    height: 100%;
     object-fit: contain;
 }
 
